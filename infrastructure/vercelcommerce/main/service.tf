@@ -1,10 +1,10 @@
 locals {
   bounded_context = "demos"
-  service_name    = "swag"
+  service_name    = "vercelcommerce"
   common_azure_tags = {
     environment = var.environment
     region      = "global"
-    source      = "Umbraco.Headless.Demo/infrastructure/swag"
+    source      = "Umbraco.VercelCommerce.Demo/infrastructure/vercelcommerce"
     cost_center = "Development - Integrations"
   }
 }
@@ -45,7 +45,7 @@ resource "azurerm_app_service" "azapp-adminweb" {
 # Add CNAME records
 resource "cloudflare_record" "adminweb_cname" {
   zone_id = var.cf_zone_id
-  name    = var.environment == "live" ? "admin.headlessdemo.umbraco.com" : "${var.environment}.admin.headlessdemo.umbraco.com"
+  name    = var.environment == "live" ? "admin.vercelcommercedemo.umbraco.com" : "${var.environment}.admin.vercelcommercedemo.umbraco.com"
   value   = azurerm_app_service.azapp-adminweb.default_site_hostname
   type    = "CNAME"
   proxied = true
@@ -54,7 +54,7 @@ resource "cloudflare_record" "adminweb_cname" {
 
 resource "cloudflare_record" "web_cname" {
   zone_id = var.cf_zone_id
-  name    = var.environment == "live" ?  "headlessdemo.umbraco.com" : "${var.environment}.headlessdemo.umbraco.com"
+  name    = var.environment == "live" ?  "vercelcommercedemo.umbraco.com" : "${var.environment}.vercelcommercedemo.umbraco.com"
   value   = "cname.vercel-dns.com"
   type    = "CNAME"
   proxied = true
@@ -64,7 +64,7 @@ resource "cloudflare_record" "web_cname" {
 # TXT records for domain validation
 resource "cloudflare_record" "adminweb_txt" {
   zone_id = var.cf_zone_id
-  name    = var.environment == "live" ? "asuid.admin.headlessdemo.umbraco.com" : "asuid.${var.environment}.admin.headlessdemo.umbraco.com"
+  name    = var.environment == "live" ? "asuid.admin.vercelcommercedemo.umbraco.com" : "asuid.${var.environment}.admin.vercelcommercedemo.umbraco.com"
   value   = azurerm_app_service.azapp-adminweb.custom_domain_verification_id
   type    = "TXT"
   ttl     = 1
@@ -78,7 +78,7 @@ resource "time_sleep" "adminweb_txt_wait" {
 
 # Hostname Binding in Azure
 resource "azurerm_app_service_custom_hostname_binding" "adminweb_hostname_binding" {
-  hostname            = var.environment == "live" ? "admin.headlessdemo.umbraco.com" : "${var.environment}.admin.headlessdemo.umbraco.com"
+  hostname            = var.environment == "live" ? "admin.vercelcommercedemo.umbraco.com" : "${var.environment}.admin.vercelcommercedemo.umbraco.com"
   app_service_name    = azurerm_app_service.azapp-adminweb.name
   resource_group_name = data.azurerm_resource_group.rg.name
   depends_on = [time_sleep.adminweb_txt_wait]

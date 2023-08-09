@@ -34,10 +34,10 @@ pool:
 
 variables:
   projectsRoot: 'src/'
-  adminWebProjectName: 'Umbraco.Headless.Demo.Web'
+  adminWebProjectName: 'Umbraco.VercelCommerce.Demo.Web'
   buildConfiguration: 'Release'
   boundedContext: 'demos'
-  serviceName: 'swag'
+  serviceName: 'vercelcommerce'
   terraformVersion: 1.1.7
   serviceVariableGroupFormat: '{0}-global-{1}' # '{boundedContext}-global-{environment}'
   serviceConnectionNameFormat: 'Infra-{0}-global-{1}' # 'Infra-{environment}-global-{boundedContext}'
