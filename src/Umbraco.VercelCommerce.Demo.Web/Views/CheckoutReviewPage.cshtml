@@ -1,0 +1,22 @@
+﻿@inherits UmbracoViewPage
+@{
+    Layout = "CheckoutLayout.cshtml";
+
+    var store = Model.GetStore();
+
+    var currentOrder = UmbracoCommerceApi.Instance.GetCurrentOrder(store.Id);
+}
+
+@await Html.PartialAsync("~/Views/Partials/CheckoutOrderInfo.cshtml", currentOrder)
+
+@using (Html.BeginPaymentForm(currentOrder))
+{
+    <div class="border border-gray-800 rounded">
+        <label class="flex items-center py-4 px-4 cursor-pointer hover:bg-gray-900">
+            <input id="accept-terms" type="checkbox" value="1" class="mr-3" />
+            <span class="font-medium">I agree and accept the sites terms of service</span>
+        </label>
+    </div>
+
+    @await Html.PartialAsync("~/Views/Partials/CheckoutPrevNext.cshtml")
+}
