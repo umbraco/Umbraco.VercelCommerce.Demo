@@ -15,7 +15,7 @@ This branch represents the frontend of the Umbraco Vercel Commerce Demo and cons
 
 ## Configuration
 
-Clone or download this branch locally
+Clone or download this branch locally 
 
 ````
 git clone --branch frontend/main https://github.com/umbraco/Umbraco.VercelCommerce.Demo.git frontend
