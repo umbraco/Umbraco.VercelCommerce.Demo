@@ -18,7 +18,13 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'vercel-commerce-demo.azurewebsites.net',
+        hostname: 'dev.admin.vercelcommercedemo.umbraco.com',
+        port: '',
+        pathname: '/media/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'admin.vercelcommercedemo.umbraco.com',
         port: '',
         pathname: '/media/**'
       }
