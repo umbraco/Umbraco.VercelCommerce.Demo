@@ -33,7 +33,7 @@ import { revalidateTag } from 'next/cache';
 import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
-const domain = process.env.UMBRACO_DOMAIN!;
+const domain = process.env.UMBRACO_BASE_URL!;
 const store_alias = process.env.UMBRACO_COMMERCE_STORE_ALIAS!;
 
 const apis: { [key: string]: any } = {
