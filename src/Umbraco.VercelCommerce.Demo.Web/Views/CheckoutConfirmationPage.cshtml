@@ -16,7 +16,7 @@
     <span class="inline-flex items-center justify-center text-6xl border-4 border-white rounded-full mb-4 w-24 h-24"><svg viewBox="0 0 20 20" class="inline-block w-16 h-16 fill-current text-white"><use href="#ico-check" /></svg></span>
     <h3 class="text-xl text-white font-medium mb-4">@string.Format("Thank you for your order #{0}", currentOrder.OrderNumber ?? currentOrder.CartNumber)</h3>
     <p class="mb-4">@Html.Raw(string.Format("A confirmation email has been sent to {0}", "<strong>" + currentOrder.CustomerInfo.Email + "</strong>"))</p>
-    <p><a href="@(Configuration["Vercel:SiteUrl"])" class="inline-block bg-purple-600 text-white px-4 py-4 rounded hover:bg-purple-800">Return to store</a></p>
+    <p><a href="@(Configuration["Vercel:SiteUrl"])" class="inline-block bg-blue-600 text-white px-4 py-4 rounded hover:bg-blue-800">Return to store</a></p>
 </div>
 
 @await Html.PartialAsync("~/Views/Partials/CheckoutOrderInfo.cshtml", currentOrder)

@@ -18,7 +18,7 @@
         @using (Html.BeginUmbracoForm("ApplyDiscountOrGiftCardCode", "CheckoutSurface", null, new { @class = "flex w-full m-0" }))
         {
             <input type="text" name="code" placeholder="Discount / Gift Card Code" class="flex-1 py-2 px-4 border border-gray-800 bg-black rounded placeholder-gray-500" />
-            <button class="ml-4 bg-purple-600 text-white px-4 rounded hover:bg-purple-800" type="submit">Apply</button>
+            <button class="ml-4 bg-blue-600 text-white px-4 rounded hover:bg-blue-800" type="submit">Apply</button>
         }
 
         @if (currentOrder.DiscountCodes.Count > 0 || currentOrder.GiftCards.Count > 0)
