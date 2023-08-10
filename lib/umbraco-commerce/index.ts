@@ -307,6 +307,12 @@ const reshapeProduct = (
     return undefined;
   }
 
+  let nodeAlias = node.route.path
+    .replace(/^\/+|\/+$/g, '')
+    .split('/')
+    .pop();
+  let nodeHandle = nodeAlias || node.id;
+
   let currency = 'USD';
   let minPrice = 0;
   let maxPrice = 0;
@@ -316,7 +322,7 @@ const reshapeProduct = (
 
   let product = <Product>{
     id: node.id,
-    handle: node.id, // nodeHandle
+    handle: nodeHandle,
     title: node.name,
     description: node.properties['shortDescription'],
     descriptionHtml: node.properties['longDescription']?.markup,
@@ -694,6 +700,9 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
   const res = await umbracoContentFetch<UmbracoNode>({
     method: 'GET',
     path: `/content/item/${handle}`,
+    headers: {
+      'Start-Item': 'products'
+    },    
     query: {
       expand: 'property:variants'
     },
@@ -708,6 +717,9 @@ export async function getProductRecommendations(productId: string): Promise<Prod
   const res = await umbracoContentFetch<UmbracoNode>({
     method: 'GET',
     path: `/content/item/${productId}`,
+    headers: {
+      'Start-Item': 'products'
+    },
     tags: [TAGS.products]
   });
 
