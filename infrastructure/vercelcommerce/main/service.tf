@@ -11,7 +11,7 @@ locals {
 
 # Resource group
 data "azurerm_resource_group" "rg_swag" {
-  name = "rg-${var.environment}-global-${local.bounded_context}"
+  name = "rg-${var.environment}-global-${local.bounded_context}-${local.service_name}"
 }
 
 # App service plan
