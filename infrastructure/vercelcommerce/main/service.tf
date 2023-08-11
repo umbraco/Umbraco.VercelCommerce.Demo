@@ -71,7 +71,7 @@ resource "cloudflare_record" "adminweb_txt_vercelcommerce" {
 }
 
 # Time delay between the txt records and the hostname binding
-resource "time_sleep" "adminweb_txt_wait" {
+resource "time_sleep" "adminweb_txt_wait_vercelcommerce" {
   depends_on      = [cloudflare_record.adminweb_txt_vercelcommerce]
   create_duration = "60s"
 }
