@@ -29,8 +29,8 @@ resource "azurerm_app_service_plan" "asp_vercelcommerce" {
 # App service - Admin Web
 resource "azurerm_app_service" "azapp_adminweb_vercelcommerce" {
   name                = "azapp-${var.environment}-${local.bounded_context}-${local.service_name}-adminweb"
-  location            = data.azurerm_resource_group.rg_swag.location
-  resource_group_name = data.azurerm_resource_group.rg_swag.name
+  location            = data.azurerm_resource_group.rg_vercelcommerce.location
+  resource_group_name = data.azurerm_resource_group.rg_vercelcommerce.name
   app_service_plan_id = azurerm_app_service_plan.asp_vercelcommerce.id
   https_only          = true
   tags                = local.common_azure_tags
@@ -80,6 +80,6 @@ resource "time_sleep" "adminweb_txt_wait_vercelcommerce" {
 resource "azurerm_app_service_custom_hostname_binding" "adminweb_hostname_binding_vercelcommerce" {
   hostname            = var.environment == "live" ? "admin.vercelcommercedemo.umbraco.com" : "${var.environment}.admin.vercelcommercedemo.umbraco.com"
   app_service_name    = azurerm_app_service.azapp_adminweb_vercelcommerce.name
-  resource_group_name = data.azurerm_resource_group.rg_swag.name
+  resource_group_name = data.azurerm_resource_group.rg_vercelcommerce.name
   depends_on = [time_sleep.adminweb_txt_wait_vercelcommerce]
 }
