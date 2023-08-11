@@ -10,15 +10,15 @@ locals {
 }
 
 # Resource group
-data "azurerm_resource_group" "rg_swag" {
+data "azurerm_resource_group" "rg_vercelcommerce" {
   name = "rg-${var.environment}-global-${local.bounded_context}-${local.service_name}"
 }
 
 # App service plan
 resource "azurerm_app_service_plan" "asp_vercelcommerce" {
   name                = "asp-${var.environment}-${local.bounded_context}-${local.service_name}"
-  location            = data.azurerm_resource_group.rg_swag.location
-  resource_group_name = data.azurerm_resource_group.rg_swag.name
+  location            = data.azurerm_resource_group.rg_vercelcommerce.location
+  resource_group_name = data.azurerm_resource_group.rg_vercelcommerce.name
   tags                = local.common_azure_tags
   sku {
     tier = "Standard"
