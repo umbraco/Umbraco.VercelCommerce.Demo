@@ -1,5 +1,7 @@
 # Umbraco Vercel Commerce Demo 🦄
 
+[![Demo - Frontend](https://img.shields.io/badge/Demo-Frontend-2ea44f)](https://vercel-commerce-demo.umbraco.com) [![Demo - Backend](https://img.shields.io/badge/Demo-Backend-2ea44f)](https://admin.vercel-commerce-demo.umbraco.com)
+
 The Umbraco Vercel Commerce Demo is an implementation of the official [Vercel Commerce demo](https://github.com/vercel/commerce) backed by Umbraco using the Content Delivery API and Umbraco Storefront API.
 
 ![Screenshots](assets/animation.gif)
