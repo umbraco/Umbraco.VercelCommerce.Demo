@@ -14,7 +14,7 @@ export const addItem = async (variantId: string | undefined): Promise<String | u
   if (!cartId || !cart) {
     cart = await createCart();
     cartId = cart.id;
-    cookies().set('cartId', cartId);
+    cookies().set('cartId', cartId, { expires: Date.now() + (60 * 60 * 1000) }); // One hour max
   }
 
   if (!variantId) {
