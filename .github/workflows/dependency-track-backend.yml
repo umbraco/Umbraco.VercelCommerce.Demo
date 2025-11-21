@@ -1,10 +1,10 @@
-name: Build and Upload SBOMs to Dependency-Track
+name: Build and Upload SBOMs to Dependency-Track (Backend)
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - '*'
+      - 'backend/main'
 
 jobs:
   sbom:
