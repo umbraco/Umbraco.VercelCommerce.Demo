@@ -51,7 +51,7 @@ jobs:
             -H "Content-Type: multipart/form-data" \
             -F "autoCreate=true" \
             -F "projectName=${{ github.event.repository.name }}-frontend" \
-            -F "projectVersion=${{ github.ref_name }}" \
+            -F "projectVersion=${{ steps.extract-version.outputs.major_version }}" \
             -F "parentProjectName=${{ github.event.repository.name }}" \
             -F "parentProjectVersion=${{ steps.extract-version.outputs.major_version }}" \
             -F "bom=@./sbom/bom-frontend.xml"
